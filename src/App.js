@@ -9,7 +9,7 @@ import ProductSell from "./components/ProductSell/ProductSell";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router> 
         <Routes>
           <Route path="/" exact element={<DemoPage />} />
           <Route path="/Restaurant" exact element={<Restaurant />} />
