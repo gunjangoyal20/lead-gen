@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import BackgroundImage from "../Assets/LiveDemo.jpg";
+import "./Chatbot.css";
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaMicrophone } from "react-icons/fa";
 
 function Chatbot() {
+  const backgroundImageUrl = `url(${BackgroundImage})`;
+
+  const styles = {
+    backgroundImage: backgroundImageUrl,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
+
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isListening, setIsListening] = useState(false);
@@ -31,42 +44,36 @@ function Chatbot() {
     recognition.current.start();
   };
 
-
-
   const handleSendMessage = async () => {
     if (!input.trim()) return;
 
     // Add user message to the messages array
-    setMessages([...messages, { text: input, user: "user" }]);
+    setMessages([...messages, { text: "", user: input }]);
     setInput("");
 
     try {
-      // Make an API call (replace with your actual API endpoint)
-      const response = await fetch(
+      // Make an API call using Axios
+      const response = await axios.post(
         "https://ivoz-ai.azurewebsites.net/chat_bot",
         {
-          method: "POST",
+          text: input,
+          session_id: "101",
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ message: input }),
         }
       );
 
-      if (response.ok) {
-        const data = await response.json();
+      // Extract the chatbot's response
+      const botResponse = response.data.response;
 
-        // Extract the chatbot's response
-        const botResponse = data.message;
-        console.log("botResponse-- ", botResponse);
-        // Add the chatbot response to the messages array
-        setMessages([...messages, { text: botResponse, user: "bot" }]);
+      // Add the chatbot response to the messages array
+      setMessages([...messages, { text: botResponse, user: input }]);
 
-        // Speak the chatbot response
-        speak(botResponse);
-      } else {
-        console.error("Failed to fetch chatbot response:", response.statusText);
-      }
+      // Speak the chatbot response
+      speak(botResponse);
     } catch (error) {
       console.error("Error fetching chatbot response:", error);
     }
@@ -79,27 +86,49 @@ function Chatbot() {
 
   return (
     <>
-      <div className="chatbot-container">
+    <div className="main_live" style={styles}>
+        <div className="chatbot_container">
+          <div className="top-border">
+            <h3>XYZ Telecom</h3>
+          </div>
+          <div className="chatbot-container">
         <div className="chatbot-messages">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.user}`}>
-              {message.text}
+            <div key={index} className={`message`}>
+              <div className="response_data response_data_right">
+                <span>You :- </span> {message.user}
+              </div>
+              <div className="response_data response_data_left">
+                <span>Bot :- </span> {message.text}
+              </div>
             </div>
           ))}
         </div>
         <div className="chatbot-input">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button onClick={handleSendMessage}>Send</button>
-          <button onClick={startListening} disabled={isListening}>
-            Speak
+          <div className="chatbot-input_speek">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              
+            />
+            <button
+              className="faMicrophone"
+              onClick={startListening}
+              disabled={isListening}
+            >
+              <FaMicrophone />
+            </button>
+          </div>
+          <button className="form_submit" onClick={handleSendMessage}>
+            <FaTelegramPlane />
           </button>
         </div>
       </div>
+        </div>
+      </div>
+      
     </>
   );
 }
