@@ -2,6 +2,7 @@ import React from "react";
 import "./DemoPage.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import BackgroundImage from "../Assets/mainPage.png";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const backgroundImageUrl = `url(${BackgroundImage})`;
@@ -27,17 +28,17 @@ const LoginForm = () => {
             </div>
             <div className="que_options">
               <button>
-                <a href="/ngo"><div className="optionNumber">A.</div><div className="tag">NGO</div></a>
+                <Link to="/ngo"><div className="optionNumber">A.</div><div className="tag">NGO</div></Link>
                 
               </button>
               <button>
-                <a href="/restaurant"><div className="optionNumber">B.</div><div className="tag">Restaurant</div></a>
+                <Link to="/restaurant"><div className="optionNumber">B.</div><div className="tag">Restaurant</div></Link>
               </button>
               <button>
-                <a href="/productsell"><div className="optionNumber">C.</div><div className="tag">Product Sell</div></a>
+                <Link to="/productsell"><div className="optionNumber">C.</div><div className="tag">Product Sell</div></Link>
               </button>
               <button>
-                <a href="/feedback"><div className="optionNumber">D.</div><div className="tag">FeedBack</div></a>
+                <Link to="/feedback"><div className="optionNumber">D.</div><div className="tag">FeedBack</div></Link>
               </button>
             </div>
           </div>
