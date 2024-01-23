@@ -4,7 +4,7 @@ section.signup {
     justify-content: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 70px 20px;
+    padding: 20px 20px;
 }
 
 
@@ -68,7 +68,7 @@ section.signup {
     color: #8f8b8b;
 }
 
-.input-box select.countrycode{
+.input-box select.countrycode {
     position: absolute;
     left: 10px;
     top: 60%;
@@ -78,7 +78,8 @@ section.signup {
     border: none;
     background: transparent;
 }
-.input-box select:focus{
+
+.input-box select:focus {
     outline: none;
 }
 
@@ -90,9 +91,18 @@ button.signup_btn {
     background-color: #292929;
     color: #fff;
 }
+
 input:focus::placeholder {
-    color:transparent;
+    color: transparent;
     transition: 0.3s ease;
+}
+
+p.errorMessage {
+    background: #64adad;
+    padding: 5px 14px;
+    max-width: max-content;
+    margin: 10px auto 0;
+    border-radius: 15px;
 }
 
 
@@ -112,9 +122,10 @@ input:focus::placeholder {
 }
 
 @media (max-width:369px) {
-    .input-box input{
+    .input-box input {
         width: 100%;
     }
+
     .input-box input::placeholder {
         font-size: 10px;
     }

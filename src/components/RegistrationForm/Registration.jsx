@@ -45,7 +45,7 @@ export default function Registration() {
       navigate("/Demo");
     } catch (error) {
       // Handle error here
-      setErrorMessage(error.response.data.message || "Error logging in");
+      setErrorMessage(error.response.data.message || "Please Provide Us your work mail");
     }
   };
   return (
@@ -129,7 +129,7 @@ export default function Registration() {
                 <button type="submit" className="signup_btn">
                   Submit
                 </button>
-                {errorMessage && <p>{errorMessage}</p>}
+                {errorMessage && <p className="errorMessage">{errorMessage}</p>}
               </form>
             </div>
             <div className="signup-img">
