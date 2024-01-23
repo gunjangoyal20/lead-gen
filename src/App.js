@@ -5,13 +5,15 @@ import Restaurant from './components/Restaurant/Restaurant';
 import NGO from './components/NgoPage/Ngo';
 import FeedBack from "./components/FeedBack/FeedBack";
 import ProductSell from "./components/ProductSell/ProductSell";
+import Registration from './components/RegistrationForm/Registration';
 
 function App() {
   return (
     <div className="App">
-      <Router> 
+      <Router>
         <Routes>
-          <Route path="/" exact element={<DemoPage />} />
+          <Route path="/" exact element={<Registration />} />
+          <Route path="/Demo" exact element={<DemoPage />} />
           <Route path="/Restaurant" exact element={<Restaurant />} />
           <Route path="/ngo" element={<NGO />} />
           <Route path="/feedback" element={<FeedBack />} />
