@@ -6,6 +6,7 @@ import NGO from './components/NgoPage/Ngo';
 import FeedBack from "./components/FeedBack/FeedBack";
 import ProductSell from "./components/ProductSell/ProductSell";
 import Registration from './components/RegistrationForm/Registration';
+import Chatbot from './components/Chatbot/Chatbot';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/ngo" element={<NGO />} />
           <Route path="/feedback" element={<FeedBack />} />
           <Route path="/productsell" element={<ProductSell />} />
+          <Route path="/Chatbot" element={<Chatbot />} />
         </Routes>
       </Router>
     </div>
