@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Chatbot = () => {
+function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isListening, setIsListening] = useState(false);
@@ -31,15 +31,45 @@ const Chatbot = () => {
     recognition.current.start();
   };
 
-  const handleSendMessage = () => {
+
+
+  const handleSendMessage = async () => {
     if (!input.trim()) return;
+
+    // Add user message to the messages array
     setMessages([...messages, { text: input, user: "user" }]);
     setInput("");
-    speak(input);
 
-    const botResponse = "I'm a simple chatbot. How can I assist you?";
-    setMessages([...messages, { text: botResponse, user: "bot" }]);
-    speak(botResponse);
+    try {
+      // Make an API call (replace with your actual API endpoint)
+      const response = await fetch(
+        "https://ivoz-ai.azurewebsites.net/chat_bot",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: input }),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+
+        // Extract the chatbot's response
+        const botResponse = data.message;
+        console.log("botResponse-- ", botResponse);
+        // Add the chatbot response to the messages array
+        setMessages([...messages, { text: botResponse, user: "bot" }]);
+
+        // Speak the chatbot response
+        speak(botResponse);
+      } else {
+        console.error("Failed to fetch chatbot response:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching chatbot response:", error);
+    }
   };
 
   const speak = (text) => {
@@ -48,28 +78,30 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="chatbot-container">
-      <div className="chatbot-messages">
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.user}`}>
-            {message.text}
-          </div>
-        ))}
+    <>
+      <div className="chatbot-container">
+        <div className="chatbot-messages">
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.user}`}>
+              {message.text}
+            </div>
+          ))}
+        </div>
+        <div className="chatbot-input">
+          <input
+            type="text"
+            placeholder="Type a message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button onClick={handleSendMessage}>Send</button>
+          <button onClick={startListening} disabled={isListening}>
+            Speak
+          </button>
+        </div>
       </div>
-      <div className="chatbot-input">
-        <input
-          type="text"
-          placeholder="Type a message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button onClick={handleSendMessage}>Send</button>
-        <button onClick={startListening} disabled={isListening}>
-          Speak
-        </button>
-      </div>
-    </div>
+    </>
   );
-};
+}
 
 export default Chatbot;
