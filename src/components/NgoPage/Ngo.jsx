@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BackgroundImage from "../Assets/mainPage.png";
 import "./ngo.css";
+import { Link } from "react-router-dom";
 
 function Ngo() {
   const backgroundImageUrl = `url(${BackgroundImage})`;
@@ -174,12 +175,6 @@ function Ngo() {
           Please provide the following details
         </h1>
         <div className="name_ngo_sec">
-          {/* <h1>
-            <span>{countValue}</span>/<span>4</span>
-          </h1> */}
-
-          {/* <form> */}
-
           <div className="form_first show_form">
             <div className="form_sec">
               <label className="que_head">Enter your organisation Name:</label>
@@ -204,7 +199,6 @@ function Ngo() {
               </button>
             </div>
           </div>
-
           <div className="form_second hidden_form">
             <div className="form_sec">
               <label className="que_head">Short Message</label>
@@ -349,7 +343,7 @@ function Ngo() {
 
             <h6>Want to try another demo! CLick here</h6>
             <button className="last">
-              <a href="/LoginForm">Demo</a>
+              <Link to="/LoginForm">Demo</Link>
             </button>
           </div>
         </div>

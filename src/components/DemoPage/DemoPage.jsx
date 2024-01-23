@@ -29,7 +29,6 @@ const LoginForm = () => {
             <div className="que_options">
               <button>
                 <Link to="/ngo"><div className="optionNumber">A.</div><div className="tag">NGO</div></Link>
-                
               </button>
               <button>
                 <Link to="/restaurant"><div className="optionNumber">B.</div><div className="tag">Restaurant</div></Link>

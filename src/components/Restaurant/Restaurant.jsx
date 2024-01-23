@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BackgroundImage from "../Assets/mainPage.png";
 import "./Restaurant.css";
+import { Link } from "react-router-dom";
 
 function Restaurant() {
   const backgroundImageUrl = `url(${BackgroundImage})`;
@@ -349,7 +350,7 @@ function Restaurant() {
             </table>
 
             <h6>Want to try another demo! CLick here</h6>
-            <button className="last"><a href="/LoginForm">Demo</a></button>
+            <button className="last"><Link to="/LoginForm">Demo</Link></button>
           </div>
         </div>
       </div>

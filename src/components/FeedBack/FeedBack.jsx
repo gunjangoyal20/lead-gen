@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BackgroundImage from "../Assets/mainPage.png";
 import "./FeedBack.css";
+import { Link } from "react-router-dom";
 
 function FeedBack() {
   const backgroundImageUrl = `url(${BackgroundImage})`;
@@ -355,7 +356,7 @@ function FeedBack() {
 
             <h6>Want to try another demo! CLick here</h6>
             <button className="last">
-              <a href="/LoginForm">Demo</a>
+              <Link to="/LoginForm">Demo</Link>
             </button>
           </div>
         </div>
