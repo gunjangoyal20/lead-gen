@@ -355,7 +355,7 @@ function ProductSell() {
 
             <h6>Want to try another demo! CLick here</h6>
             <button className="last">
-              <Link to="/LoginForm">Demo</Link>
+              <Link to="/Chatbot">Demo</Link>
             </button>
           </div>
         </div>

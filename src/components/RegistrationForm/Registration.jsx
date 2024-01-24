@@ -1,6 +1,6 @@
 import React from "react";
 import "./Registration.css";
-import BackgroundImage from "../Assets/signUp_bg.png";
+import BackgroundImage from "../Assets/registration.jpg";
 import SignUpImg from "../Assets/signUp_Img.jpg";
 import { FaUser } from "react-icons/fa";
 import { IoIosMailOpen } from "react-icons/io";
@@ -15,7 +15,6 @@ export default function Registration() {
   const styles = {
     backgroundImage: backgroundImageUrl,
     backgroundSize: "cover",
-    backgroundPosition: "center",
   };
 
   const [firstname, setFirstname] = useState("");
@@ -26,9 +25,36 @@ export default function Registration() {
   const [organizationname, setOrganization] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+
+    // Only allows numbers
+    const phoneNumber = value.replace(/[^\d]/g, '');
+    
+    // Split the number into parts
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 4) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+    }
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
+  const handleInputChange = (e) => {
+    setMobileno(formatPhoneNumber(e.target.value));
+  };
+
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const regex = /^\d{3}-\d{3}-\d{4}$/;
+    if (!regex.test(mobileno)) {
+      alert('Phone number must be in the format: 123-123-1234');
+    } else {
+      // Submit form or further processing
+      console.log('Phone number submitted:', mobileno);
+    }
     try {
       const response = await axios.post(
         "https://ivoz-ai.azurewebsites.net/demo_form",
@@ -37,7 +63,7 @@ export default function Registration() {
           lastname,
           email,
           mobileno,
-          organizationname
+          organizationname,
         }
       );
       // Handle response here (e.g., redirecting the user)
@@ -45,7 +71,9 @@ export default function Registration() {
       navigate("/Demo");
     } catch (error) {
       // Handle error here
-      setErrorMessage(error.response.data.message || "Please Provide Us your work mail");
+      setErrorMessage(
+        error.response.data.message || "Please Provide Us your work mail"
+      );
     }
   };
   return (
@@ -98,20 +126,23 @@ export default function Registration() {
                   />
                 </div>
                 <div className="input-box phoneInput">
-                  <select className="countrycode" value={countryCode} 
-                  onChange={(e) => setcountryCode(e.target.value)}
+                  <select
+                    className="countrycode"
+                    value={countryCode}
+                    onChange={(e) => setcountryCode(e.target.value)}
                   >
                     <option value="US">(+1)</option>
                     <option value="GB">(+44)</option>
                     <option value="IN">(+91)</option>
                   </select>
                   <input
-                    type="number"
+                    type="tel"
                     name="phonenumber"
                     autoComplete="off"
                     placeholder="Mobile Number (Optional)"
                     value={mobileno}
-                    onChange={(e) => setMobileno(e.target.value)}
+                    maxLength={12}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="input-box">
