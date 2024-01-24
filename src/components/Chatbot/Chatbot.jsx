@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import BackgroundImage from "../Assets/LiveDemo.jpg";
+import BackgroundImage from "../Assets/mainPage.png";
 import "./Chatbot.css";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaMicrophone } from "react-icons/fa";
@@ -20,7 +20,7 @@ function Chatbot() {
   const recognition = useRef(
     new (window.SpeechRecognition || window.webkitSpeechRecognition)()
   );
-
+ 
   useEffect(() => {
     const recognitionRef = recognition.current; // Create a local variable
 
@@ -84,6 +84,13 @@ function Chatbot() {
     window.speechSynthesis.speak(utterance);
   };
 
+  const enterPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent the default action to avoid form submission
+      handleSendMessage();
+    }
+  };
+
   return (
     <>
     <div className="main_live" style={styles}>
@@ -111,7 +118,7 @@ function Chatbot() {
               placeholder="Type a message..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              
+              onKeyPress={enterPress}
             />
             <button
               className="faMicrophone"

@@ -288,9 +288,12 @@ function Ngo() {
                   {/* Add other countries as needed */}
                 </select>
                 <input
+                  type="number"
                   id="input_block3"
                   text="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   placeholder="Enter you phone number"
+                  title="Phone number should be in the format: 123-456-7890"
                   onChange={fourhandleInputChange}
                   onKeyPress={fourhandleKeyPress}
                   value={fourValue}
