@@ -1,72 +1,110 @@
-.main_wrapper{
+.main_wrapper {
     height: 100vh;
-    width: 100%;
     text-align: center;
-    padding: 70px 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container{max-width: 900px;margin:0 auto}
+.container {
+    max-width: 900px;
+    margin: 0 auto
+}
 
-.title_heading{color: #fff;font-size: 41px;}
+.title_heading {
+    color: #fff;
+    font-size: 41px;
+}
 
-.quetionaries{
+.quetionaries {
     margin-top: 50px;
 }
 
-.ques{
-    font-size: 30px;
-    color: #040404;
+.ques {
+    font-size: 20px;
+    color: #fff;
 }
 
 .que_options {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-wrap: wrap;
 }
-.que_options button a{
+
+.que_options button a {
     width: 350px;
     margin: 5px auto;
     padding: 18px 10px;
     border-radius: 30px;
-    border: 1px solid #a6a5a6;
+    border: 1px solid #fff;
     background: transparent;
     text-decoration: none;
-    color: #000;
+    color: #fff;
     font-size: 17px;
     display: flex;
+    justify-content: center;
 }
-div.optionNumber{
+
+div.optionNumber {
     flex: 0 0 40%;
 }
 
-.que_options button a:hover{
-    box-shadow: 0px 7px 3.5px rgba(1,1,1,0.15) ;
+.que_options button a:hover {
+    box-shadow: 0px 7px 3.5px rgba(1, 1, 1, 0.15);
 }
 
-.que_options button{
+.que_options button {
+    flex: 0 0 48%;
+    max-width: 48%;
     background: transparent;
     outline: none;
     border: none;
     display: flex;
 }
 
-.que_options{
+.que_options {
     margin-top: 30px;
 }
 
-@media (max-width:767px){
-    .title_heading{font-size: 35px;}
-    .ques{font-size: 25px;}
+@media (max-width:767px) {
+    .title_heading {
+        font-size: 35px;
+    }
+
+    .ques {
+        font-size: 25px;
+    }
+    .que_options button{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
-@media (max-width:539px){
-    .title_heading{font-size: 30px;}
-    .ques{font-size: 20px;}
-    .que_options button a{width: 250px;}
+@media (max-width:539px) {
+    .title_heading {
+        font-size: 30px;
+    }
+
+    .ques {
+        font-size: 20px;
+    }
+
+    .que_options button a {
+        width: 250px;
+    }
 }
 
-@media (max-width:380px){
-    .que_options button a{width: 150px;}
-    .ques{font-size: 15px;}
-    .title_heading{font-size: 20px;}
+@media (max-width:380px) {
+    .que_options button a {
+        width: 150px;
+    }
+
+    .ques {
+        font-size: 15px;
+    }
+
+    .title_heading {
+        font-size: 20px;
+    }
 }

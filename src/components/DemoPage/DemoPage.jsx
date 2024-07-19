@@ -1,7 +1,7 @@
 import React from "react";
 import "./DemoPage.css";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import BackgroundImage from "../Assets/mainPage.png";
+// import { FaLongArrowAltRight } from "react-icons/fa";
+import BackgroundImage from "../Assets/zipGif.gif";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
@@ -15,29 +15,29 @@ const LoginForm = () => {
 
   return (
     <>
+    {/* <FaLongArrowAltRight /> */}
       <div className="main_wrapper" style={styles}>
         <div className="container">
           <div className="title_heading">
-            "Step into the AI Wonderland: Your Journey Begins Here!"
+            Welcome to iVoz Ai: Your journey begins here!
           </div>
           <div className="quetionaries">
             <div className="que_icon"></div>
             <div className="ques">
-              <FaLongArrowAltRight /> What aspect of our conversational voice ai
-              demo would you like to see in action?
+              Choose your Own Path and Discover the wonders of AI technology
             </div>
             <div className="que_options">
               <button>
-                <Link to="/ngo"><div className="optionNumber">A.</div><div className="tag">NGO</div></Link>
+                <Link to="/ngo"><div className="tag">NGO</div></Link>
               </button>
               <button>
-                <Link to="/restaurant"><div className="optionNumber">B.</div><div className="tag">Restaurant</div></Link>
+                <Link to="/restaurant"><div className="tag">Restaurant</div></Link>
               </button>
               <button>
-                <Link to="/productsell"><div className="optionNumber">C.</div><div className="tag">Product Sell</div></Link>
+                <Link to="/productsell"><div className="tag">Product Sell</div></Link>
               </button>
               <button>
-                <Link to="/feedback"><div className="optionNumber">D.</div><div className="tag">FeedBack</div></Link>
+                <Link to="/feedback"><div className="tag">FeedBack</div></Link>
               </button>
             </div>
           </div>

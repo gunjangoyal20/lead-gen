@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import BackgroundImage from "../Assets/mainPage.png";
+import BackgroundImage from "../Assets/zipGif.gif";
 import "./productSell.css";
 import { Link } from "react-router-dom";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 function ProductSell() {
   const backgroundImageUrl = `url(${BackgroundImage})`;
@@ -169,194 +170,211 @@ function ProductSell() {
   return (
     <>
       <div className="name_ngo" style={styles}>
-        <h1 className="title_head">
-          Welcome to our Product sell Demo!
-          <br />
-          Please provide the following details
-        </h1>
-        <div className="name_ngo_sec">
-          {/* <h1>
+        <div className="name_ngo_inner">
+          <h1 className="title_head">
+            Welcome to our Product sell Demo!
+            <br />
+            Please provide the following details
+          </h1>
+          <div className="name_ngo_sec">
+            {/* <h1>
             <span>{countValue}</span>/<span>4</span>
           </h1> */}
 
-          {/* <form> */}
+            {/* <form> */}
 
-          <div class="form_first show_form">
-            <div className="form_sec">
-              <label className="que_head">Enter your Organistaion Name:</label>
-              <br />
-              <input
-                id="input_block2"
-                type="text"
-                placeholder="Organisation  Name"
-                onChange={firsthandleInputChange}
-                onKeyPress={firsthandleKeyPress}
-                value={firstValue}
-                className={firstValue === "" ? "empty" : "notEmpty"}
-              ></input>
+            <div class="form_first show_form">
+              <div className="form_sec">
+                <label className="que_head">
+                  Enter your Organistaion Name:
+                </label>
+                <br />
+                <input
+                  id="input_block2"
+                  type="text"
+                  placeholder="Organisation  Name"
+                  onChange={firsthandleInputChange}
+                  onKeyPress={firsthandleKeyPress}
+                  value={firstValue}
+                  className={firstValue === "" ? "empty" : "notEmpty"}
+                ></input>
+              </div>
+              <div className="form_submit">
+                <button
+                  className={firstValue === "" ? "empty" : "notEmpty"}
+                  onClick={firsthandleButtonClick}
+                  disabled={firstValue === ""}
+                >
+                  <FaLongArrowAltRight/>
+                </button>
+              </div>
             </div>
-            <div className="form_submit">
-              <button
-                className={firstValue === "" ? "empty" : "notEmpty"}
-                onClick={firsthandleButtonClick}
-                disabled={firstValue === ""}
-              >
-                Next
-              </button>
-            </div>
-          </div>
 
-          <div class="form_second hidden_form">
-            <div className="form_sec">
-              <label className="que_head">Special Offer</label>
-              <br />
-              <textarea
-                id="input_block1"
-                placeholder="We have too many offers for you. Like 60% off upto shop for $200"
-                onChange={secondhandleInputChange}
-                onKeyPress={secondhandleKeyPress}
-                value={secondValue}
-                className={secondValue === "" ? "empty" : "notEmpty"}
-              ></textarea>
+            <div class="form_second hidden_form">
+              <div className="form_sec">
+                <label className="que_head">We have special offer for you</label>
+                <br />
+                <textarea
+                  id="input_block1"
+                  placeholder="We have too many offers for you. Like 60% off upto shop for $200"
+                  onChange={secondhandleInputChange}
+                  onKeyPress={secondhandleKeyPress}
+                  value={secondValue}
+                  className={secondValue === "" ? "empty" : "notEmpty"}
+                ></textarea>
+              </div>
+              <div className="form_submit">
+                <button
+                  className={`${
+                    firstValue === "" ? "empty" : "notEmpty"
+                  } previousBtn`}
+                  onClick={firsthandleButtonClick_p}
+                  disabled={firstValue === ""}
+                >
+                   <FaLongArrowAltRight />
+                </button>
+                <button
+                  className={secondValue === "" ? "empty" : "notEmpty"}
+                  onClick={secondhandleButtonClick}
+                  disabled={secondValue === ""}
+                >
+                  <FaLongArrowAltRight/>
+                </button>
+              </div>
             </div>
-            <div className="form_submit">
-              <button
-                className={firstValue === "" ? "empty" : "notEmpty"}
-                onClick={firsthandleButtonClick_p}
-                disabled={firstValue === ""}
-              >
-                Previous
-              </button>
-              <button
-                className={secondValue === "" ? "empty" : "notEmpty"}
-                onClick={secondhandleButtonClick}
-                disabled={secondValue === ""}
-              >
-                Next
-              </button>
-            </div>
-          </div>
 
-          <div class="form_third hidden_form">
-            <div className="form_sec">
-              <label className="que_head">Product name with price</label>
-              <br />
-              <textarea
-                id="input_block4"
-                placeholder="
+            <div class="form_third hidden_form">
+              <div className="form_sec">
+                <label className="que_head">Product name with price</label>
+                <br />
+                <textarea
+                  id="input_block4"
+                  placeholder="
                 1. Coffee Maker - $49.99
                 2. Bluetooth Headphones - $79.99
                 3. Portable Bluetooth Speaker - $29.99"
-                onChange={thirdhandleInputChange}
-                onKeyPress={thirdhandleKeyPress}
-                value={thirdValue}
-                className={thirdValue === "" ? "empty" : "notEmpty"}
-              ></textarea>
-            </div>
-            <div className="form_submit">
-              <button
-                className={secondValue === "" ? "empty" : "notEmpty"}
-                onClick={secondhandleButtonClick_p}
-                disabled={secondValue === ""}
-              >
-                Previous
-              </button>
-              <button
-                className={thirdValue === "" ? "empty" : "notEmpty"}
-                onClick={thirdhandleButtonClick}
-                disabled={thirdValue === ""}
-              >
-                Next
-              </button>
-            </div>
-          </div>
-
-          <div class="form_four hidden_form">
-            <div className="form_sec">
-              <label className="que_head">
-                Phone Number for payment link and Order Tracking
-              </label>
-              <br />
-              <div className="flex_form">
-                <select value={countryCode} onChange={handleCountryCodeChange}>
-                  <option value="+1">+1</option> {/* USA */}
-                  <option value="+44">+44</option> {/* UK */}
-                  <option value="+91">+91</option>
-                  <option value="+62">+62</option>
-                  <option value="+98">+98</option>
-                  <option value="+964">+964</option>
-                  <option value="+353">+353</option>
-                  <option value="+1">+1</option>
-                  <option value="+598">+598</option>
-                  <option value="+998">+998</option>
-                  <option value="+678">+678</option>
-                  <option value="+379">+379</option>
-                  <option value="+58">+58</option>
-                  <option value="+84">+84</option>
-                  <option value="+681">+681</option>
-                  <option value="+967">+967</option>
-                  <option value="+260">+260</option>
-                  <option value="+263">+263</option>
-                  {/* Add other countries as needed */}
-                </select>
-                <input
-                  id="input_block3"
-                  text="tel"
-                  placeholder="Enter you phone number"
-                  onChange={fourhandleInputChange}
-                  onKeyPress={fourhandleKeyPress}
-                  value={fourValue}
-                  className={fourValue === "" ? "empty" : "notEmpty"}
-                ></input>
+                  onChange={thirdhandleInputChange}
+                  onKeyPress={thirdhandleKeyPress}
+                  value={thirdValue}
+                  className={thirdValue === "" ? "empty" : "notEmpty"}
+                ></textarea>
+              </div>
+              <div className="form_submit">
+                <button
+                  className={`${
+                    secondValue === "" ? "empty" : "notEmpty"
+                  } previousBtn`}
+                  onClick={secondhandleButtonClick_p}
+                  disabled={secondValue === ""}
+                >
+                   <FaLongArrowAltRight />
+                </button>
+                <button
+                  className={thirdValue === "" ? "empty" : "notEmpty"}
+                  onClick={thirdhandleButtonClick}
+                  disabled={thirdValue === ""}
+                >
+                  <FaLongArrowAltRight/>
+                </button>
               </div>
             </div>
-            <div className="form_submit">
-              <button
-                className={thirdValue === "" ? "empty" : "notEmpty"}
-                onClick={thirdhandleButtonClick_p}
-                disabled={thirdValue === ""}
-              >
-                Previous
-              </button>
-              <button
-                className={fourValue === "" ? "empty" : "notEmpty"}
-                onClick={fourhandleButtonClick}
-                disabled={fourValue === ""}
-              >
-                Submit
-              </button>
+
+            <div class="form_four hidden_form">
+              <div className="form_sec">
+                <label className="que_head">
+                 Enter your phone number for dummy payment link
+                </label>
+                <br />
+                <div className="flex_form">
+                  <select
+                    value={countryCode}
+                    onChange={handleCountryCodeChange}
+                  >
+                    <option value="+1">+1</option> {/* USA */}
+                    <option value="+44">+44</option> {/* UK */}
+                    <option value="+91">+91</option>
+                    <option value="+62">+62</option>
+                    <option value="+98">+98</option>
+                    <option value="+964">+964</option>
+                    <option value="+353">+353</option>
+                    <option value="+1">+1</option>
+                    <option value="+598">+598</option>
+                    <option value="+998">+998</option>
+                    <option value="+678">+678</option>
+                    <option value="+379">+379</option>
+                    <option value="+58">+58</option>
+                    <option value="+84">+84</option>
+                    <option value="+681">+681</option>
+                    <option value="+967">+967</option>
+                    <option value="+260">+260</option>
+                    <option value="+263">+263</option>
+                    {/* Add other countries as needed */}
+                  </select>
+                  <input
+                    id="input_block3"
+                    text="tel"
+                    placeholder="Enter you phone number"
+                    onChange={fourhandleInputChange}
+                    onKeyPress={fourhandleKeyPress}
+                    value={fourValue}
+                    className={fourValue === "" ? "empty" : "notEmpty"}
+                  ></input>
+                </div>
+              </div>
+              <div className="form_submit">
+                <button
+                  className={`${
+                    thirdValue === "" ? "empty" : "notEmpty"
+                  } previousBtn`}
+                  onClick={thirdhandleButtonClick_p}
+                  disabled={thirdValue === ""}
+                >
+                   <FaLongArrowAltRight />
+                </button>
+                <button
+                  className={fourValue === "" ? "empty" : "notEmpty"}
+                  onClick={fourhandleButtonClick}
+                  disabled={fourValue === ""}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* </form> */}
+            {/* </form> */}
 
-          <div className="result_sec hidden_form">
-            <label className="que_head">Result</label>
-            <table className="result_table">
-              <thead>
-                <tr>
-                  <th>Organisation Name</th>
-                  <th>Special Offer</th>
-                  <th>Product Name with price</th>
-                  <th>Phone Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{firstValue}</td>
-                  <td>{secondValue}</td>
-                  <td>{thirdValue}</td>
-                  <td>
-                    {countryCode} {fourValue}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="result_sec hidden_form">
+              <label className="que_head">Result</label>
+              <div className="results-table">
+                <div className="result-inr">
+                  <div className="result-inner-box">
+                    <div className="result_head">Organisation name</div>
+                    <div className="result_value">{firstValue}</div>
+                  </div>
+                  <div className="result-inner-box">
+                    <div className="result_head">Message you give us</div>
+                    <div className="result_value">{secondValue}</div>
+                  </div>
+                  <div className="result-inner-box">
+                    <div className="result_head">Donation Amount</div>
+                    <div className="result_value">{thirdValue}</div>
+                  </div>
+                  <div className="result-inner-box">
+                    <div className="result_head">Your mobile number</div>
+                    <div className="result_value">
+                      {countryCode} {fourValue}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <h6>Want to try another demo! CLick here</h6>
-            <button className="last">
-              <Link to="/Chatbot">Demo</Link>
-            </button>
+              <h6>
+                Want to try another demo!{" "}
+                <Link to="/Chatbot" className="chatbotLink">
+                  Click here!
+                </Link>{" "}
+              </h6>
+            </div>
           </div>
         </div>
       </div>

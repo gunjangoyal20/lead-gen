@@ -1,20 +1,201 @@
-import React, { useState } from "react";
-import BackgroundImage from "../Assets/mainPage.png";
-import "./FeedBack.css";
-import { Link } from "react-router-dom";
+// import React, { useState } from "react";
+// import BackgroundImage from "../Assets/zipGif.gif";
+// import "../ProductSell/productSell.css";
+// import { Link } from "react-router-dom";
+// import { FaLongArrowAltRight } from "react-icons/fa";
+
+// function FeedBack() {
+//   const backgroundImageUrl = `url(${BackgroundImage})`;
+
+//   const styles = {
+//     backgroundImage: backgroundImageUrl,
+//     backgroundSize: "cover",
+//     backgroundPosition: "center",
+//   };
+//   // FIRST START
+
+//   const [countValue, setCountValue] = useState(1);
+
+//   const [firstValue, setFirstValue] = useState("");
+//   const firsthandleInputChange = (event) => {
+//     setFirstValue(event.target.value);
+//   };
+//   const firsthandleButtonClick = () => {
+//     setCountValue(countValue + 1);
+//     if (firstValue !== "") {
+//       console.log("input:", firstValue);
+//       document.querySelector(".form_first").classList.remove("show_form");
+//       document.querySelector(".form_first").classList.add("hidden_form");
+//       document.querySelector(".form_second").classList.add("show_form");
+//       document.querySelector(".form_second").classList.remove("hidden_form");
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   const firsthandleKeyPress = (event) => {
+//     if (event.key === "Enter") {
+//       event.preventDefault(); // Prevent the default action to avoid form submission
+//       firsthandleButtonClick();
+//     }
+//   };
+
+//   // FIRST END
+
+//   //SECOND START
+
+//   const [secondValue, setSecondValue] = useState("");
+//   const secondhandleInputChange = (event) => {
+//     setSecondValue(event.target.value);
+//   };
+//   const secondhandleButtonClick = () => {
+//     setCountValue(countValue + 1);
+//     if (secondValue !== "") {
+//       console.log("input:", secondValue);
+//       document.querySelector(".form_second").classList.remove("show_form");
+//       document.querySelector(".form_second").classList.add("hidden_form");
+//       document.querySelector(".form_third").classList.remove("hidden_form");
+//       document.querySelector(".form_third").classList.add("show_form");
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   const secondhandleKeyPress = (event) => {
+//     if (event.key === "Enter") {
+//       event.preventDefault(); // Prevent the default action to avoid form submission
+//       secondhandleButtonClick();
+//     }
+//   };
+
+//   const firsthandleButtonClick_p = () => {
+//     if (firstValue !== "") {
+//       console.log("input:", firstValue);
+//       document.querySelector(".form_second").classList.remove("show_form");
+//       document.querySelector(".form_second").classList.add("hidden_form");
+//       document.querySelector(".form_first").classList.remove("hidden_form");
+//       document.querySelector(".form_first").classList.add("show_form");
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   //SECOND END
+
+//   //THIRD START
+
+//   const [thirdValue, setThirdValue] = useState("");
+//   const thirdhandleInputChange = (event) => {
+//     setThirdValue(event.target.value);
+//   };
+//   const thirdhandleButtonClick = () => {
+//     setCountValue(countValue + 1);
+//     if (thirdValue !== "") {
+//       console.log("input:", thirdValue);
+//       document.querySelector(".form_third").classList.remove("show_form");
+//       document.querySelector(".form_third").classList.add("hidden_form");
+//       document.querySelector(".form_four").classList.remove("hidden_form");
+//       document.querySelector(".form_four").classList.add("show_form");
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   const thirdhandleKeyPress = (event) => {
+//     if (event.key === "Enter") {
+//       event.preventDefault(); // Prevent the default action to avoid form submission
+//       thirdhandleButtonClick();
+//     }
+//   };
+
+//   const secondhandleButtonClick_p = () => {
+//     if (secondValue !== "") {
+//       console.log("input:", secondValue);
+//       document.querySelector(".form_third").classList.remove("show_form");
+//       document.querySelector(".form_third").classList.add("hidden_form");
+//       document.querySelector(".form_second").classList.remove("hidden_form");
+//       document.querySelector(".form_second").classList.add("show_form");
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   //THIRD END
+
+//   //THIRD START
+
+//   const [fourValue, setFourValue] = useState("");
+//   const [countryCode, setCountryCode] = useState("+1");
+//   const fourhandleInputChange = (event) => {
+//     setFourValue(event.target.value);
+//   };
+
+//   const handleCountryCodeChange = (event) => {
+//     setCountryCode(event.target.value);
+//   };
+
+//   const fourhandleButtonClick = () => {
+//     if (fourValue !== "") {
+//       document.querySelector(".form_four").classList.add("hidden_form");
+//       document.querySelector(".form_four").classList.remove("show_form");
+//       document.querySelector(".result_sec").classList.add("show_form");
+//       document.querySelector(".result_sec").classList.remove("hidden_form");
+//       console.log("input:", fourValue);
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   const fourhandleKeyPress = (event) => {
+//     if (event.key === "Enter") {
+//       event.preventDefault(); // Prevent the default action to avoid form submission
+//       fourhandleButtonClick();
+//     }
+//   };
+
+//   const thirdhandleButtonClick_p = () => {
+//     if (secondValue !== "") {
+//       console.log("input:", secondValue);
+//       document.querySelector(".form_four").classList.add("hidden_form");
+//       document.querySelector(".form_four").classList.remove("show_form");
+//       document.querySelector(".form_third").classList.remove("hidden_form");
+//       document.querySelector(".form_third").classList.add("show_form");
+//     } else {
+//       console.log("empty input");
+//     }
+//   };
+
+//   //THIRD END
+
+import React, { useState, useEffect } from "react";
+import BackgroundImage from "../Assets/zipGif.gif";
+import "../ProductSell/productSell.css";
+import { Link, useLocation } from "react-router-dom";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 function FeedBack() {
   const backgroundImageUrl = `url(${BackgroundImage})`;
-
   const styles = {
     backgroundImage: backgroundImageUrl,
     backgroundSize: "cover",
     backgroundPosition: "center",
   };
+
+  // Get client_id from URL
+  const location = useLocation();
+  const [clientId, setClientId] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const clientIdParam = params.get("client_id");
+    if (clientIdParam) {
+      setClientId(clientIdParam);
+      console.log("Client ID:", clientIdParam);
+    }
+  }, [location]);
+
   // FIRST START
-
   const [countValue, setCountValue] = useState(1);
-
   const [firstValue, setFirstValue] = useState("");
   const firsthandleInputChange = (event) => {
     setFirstValue(event.target.value);
@@ -38,11 +219,9 @@ function FeedBack() {
       firsthandleButtonClick();
     }
   };
-
   // FIRST END
 
-  //SECOND START
-
+  // SECOND START
   const [secondValue, setSecondValue] = useState("");
   const secondhandleInputChange = (event) => {
     setSecondValue(event.target.value);
@@ -78,11 +257,9 @@ function FeedBack() {
       console.log("empty input");
     }
   };
+  // SECOND END
 
-  //SECOND END
-
-  //THIRD START
-
+  // THIRD START
   const [thirdValue, setThirdValue] = useState("");
   const thirdhandleInputChange = (event) => {
     setThirdValue(event.target.value);
@@ -118,11 +295,9 @@ function FeedBack() {
       console.log("empty input");
     }
   };
+  // THIRD END
 
-  //THIRD END
-
-  //THIRD START
-
+  // FOURTH START
   const [fourValue, setFourValue] = useState("");
   const [countryCode, setCountryCode] = useState("+1");
   const fourhandleInputChange = (event) => {
@@ -140,6 +315,7 @@ function FeedBack() {
       document.querySelector(".result_sec").classList.add("show_form");
       document.querySelector(".result_sec").classList.remove("hidden_form");
       console.log("input:", fourValue);
+      submitForm(); // Call API on final form submission
     } else {
       console.log("empty input");
     }
@@ -164,11 +340,45 @@ function FeedBack() {
     }
   };
 
-  //THIRD END
+  const submitForm = async () => {
+    const payload = {
+      org_name: firstValue,
+      rating: secondValue,
+      notes: thirdValue,
+      phone_num: `${countryCode}${fourValue}`,
+      bot_type: "FEEDBACK BOT"
+    };
+
+    try {
+      const response = await fetch(
+        `https://leadapi.ivoz.ai/select-bot/?client_id=${clientId}`,
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("API response:", data);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  };
+  // FOURTH END
+
 
   return (
     <>
       <div className="name_ngo" style={styles}>
+        <div className="name_ngo_inner">
         <h1 className="title_head">
           Welcome to our Feedback Demo!
           <br />
@@ -201,7 +411,7 @@ function FeedBack() {
                 onClick={firsthandleButtonClick}
                 disabled={firstValue === ""}
               >
-                Next
+                <FaLongArrowAltRight/>
               </button>
             </div>
           </div>
@@ -227,18 +437,20 @@ function FeedBack() {
             </div>
             <div className="form_submit">
               <button
-                className={firstValue === "" ? "empty" : "notEmpty"}
+                className={`${
+                  firstValue === "" ? "empty" : "notEmpty"
+                } previousBtn`}
                 onClick={firsthandleButtonClick_p}
                 disabled={firstValue === ""}
               >
-                Previous
+                 <FaLongArrowAltRight />
               </button>
               <button
                 className={secondValue === "" ? "empty" : "notEmpty"}
                 onClick={secondhandleButtonClick}
                 disabled={secondValue === ""}
               >
-                Next
+                 <FaLongArrowAltRight />
               </button>
             </div>
           </div>
@@ -258,18 +470,20 @@ function FeedBack() {
             </div>
             <div className="form_submit">
               <button
-                className={secondValue === "" ? "empty" : "notEmpty"}
+                className={`${
+                  secondValue === "" ? "empty" : "notEmpty"
+                } previousBtn`}
                 onClick={secondhandleButtonClick_p}
                 disabled={secondValue === ""}
               >
-                Previous
+                 <FaLongArrowAltRight />
               </button>
               <button
                 className={thirdValue === "" ? "empty" : "notEmpty"}
                 onClick={thirdhandleButtonClick}
                 disabled={thirdValue === ""}
               >
-                Next
+                 <FaLongArrowAltRight />
               </button>
             </div>
           </div>
@@ -313,11 +527,13 @@ function FeedBack() {
             </div>
             <div className="form_submit">
               <button
-                className={thirdValue === "" ? "empty" : "notEmpty"}
+                className={`${
+                  thirdValue === "" ? "empty" : "notEmpty"
+                } previousBtn`}
                 onClick={thirdhandleButtonClick_p}
                 disabled={thirdValue === ""}
               >
-                Previous
+                 <FaLongArrowAltRight />
               </button>
               <button
                 className={fourValue === "" ? "empty" : "notEmpty"}
@@ -332,33 +548,40 @@ function FeedBack() {
           {/* </form> */}
 
           <div className="result_sec hidden_form">
-            <label className="que_head">Result</label>
-            <table className="result_table">
-              <thead>
-                <tr>
-                  <th>Organisation Name</th>
-                  <th>Rating</th>
-                  <th>Additional Note</th>
-                  <th>Phone Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{firstValue}</td>
-                  <td>{secondValue}</td>
-                  <td>{thirdValue}</td>
-                  <td>
-                    {countryCode} {fourValue}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <label className="que_head">
+                Here is customer Insight spotlight
+              </label>
+              <div className="results-table">
+                <div className="result-inr">
+                  <div className="result-inner-box">
+                    <div className="result_head">Organisation name</div>
+                    <div className="result_value">{firstValue}</div>
+                  </div>
+                  <div className="result-inner-box">
+                    <div className="result_head">Message you give us</div>
+                    <div className="result_value">{secondValue}</div>
+                  </div>
+                  <div className="result-inner-box">
+                    <div className="result_head">Your rating</div>
+                    <div className="result_value">{thirdValue}</div>
+                  </div>
+                  <div className="result-inner-box">
+                    <div className="result_head">Your mobile number</div>
+                    <div className="result_value">
+                      {countryCode} {fourValue}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <h6>Want to try another demo! CLick here</h6>
-            <button className="last">
-              <Link to="/Chatbot">Demo</Link>
-            </button>
+              <h6>
+                Want to try another demo!{" "}
+                <Link to="/Chatbot" className="chatbotLink">
+                  Click here!
+                </Link>{" "}
+              </h6>
           </div>
+        </div>
         </div>
       </div>
     </>
